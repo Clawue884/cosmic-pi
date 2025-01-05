@@ -1,0 +1,14 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.17;
+
+contract MockOracle {
+    mapping(string => mapping(string => uint256)) public exchangeRates;
+
+    function setExchangeRate(string memory fromCurrency, string memory toCurrency, uint256 rate) public {
+        exchangeRates[fromCurrency][toCurrency] = rate;
+    }
+
+    function getExchangeRate(string memory fromCurrency, string memory toCurrency) public view returns (uint256) {
+        return exchangeRates[fromCurrency][toCurrency];
+    }
+}
